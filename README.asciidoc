@@ -1,0 +1,7 @@
+gource-maven-plugin
+=================
+David Thomas Hume
+:Author Initials: DTH
+
+A maven generated project site is available for the latest
+http://dthu.me/projects/gource-maven-plugin/[snapshot] version.

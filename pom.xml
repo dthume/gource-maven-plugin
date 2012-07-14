@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="
+    http://maven.apache.org/POM/4.0.0
+    http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.dthume</groupId>
+    <artifactId>dthume-public</artifactId>
+    <version>0.3-SNAPSHOT</version>
+  </parent>
+
+  <groupId>org.dthume.maven</groupId>
+  <artifactId>gource-maven-plugin</artifactId>
+  <version>0.1-SNAPSHOT</version>
+  <packaging>maven-plugin</packaging>
+
+  <name>Gource Maven Plugin</name>
+ 
+  <inceptionYear>2012</inceptionYear>
+  <url>http://dthume.github.com/${project.artifactId}/</url>
+
+  <description>
+    Plugin for working with the Gource software version control visualisation
+    tool
+  </description>
+
+  <scm>
+    <connection>scm:git:git://github.com/dthume/${project.artifactId}.git</connection>
+    <developerConnection>scm:git:git@github.com:dthume/${project.artifactId}.git</developerConnection>
+    <url>https://github.com/dthume/${project.artifactId}</url>
+  </scm>
+
+  <distributionManagement>
+    <site>
+      <id>dthu.me.web</id>
+      <name>org.dthume Maven Website</name>
+      <url>https://github.com/dthume/${project.artifactId}/</url>
+    </site>
+  </distributionManagement>
+  
+  <properties>
+    <org.apache.maven.version>3.0.3</org.apache.maven.version>
+    <org.apache.maven.scm.version>1.7</org.apache.maven.scm.version>
+    <org.twdata.maven.mojo-executor.version>2.0</org.twdata.maven.mojo-executor.version>
+    <org.xmlunit.version>1.3</org.xmlunit.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>xmlunit</groupId>
+      <artifactId>xmlunit</artifactId>
+      <version>${org.xmlunit.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.dthume</groupId>
+      <artifactId>jaxp-utils</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>net.sf.saxon</groupId>
+      <artifactId>Saxon-HE</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-plugin-api</artifactId>
+      <version>${org.apache.maven.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven.scm</groupId>
+      <artifactId>maven-scm-api</artifactId>
+      <version>${org.apache.maven.scm.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven.scm</groupId>
+      <artifactId>maven-scm-manager-plexus</artifactId>
+      <version>${org.apache.maven.scm.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven.scm</groupId>
+      <artifactId>maven-scm-provider-svn-commons</artifactId>
+      <version>${org.apache.maven.scm.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven.scm</groupId>
+      <artifactId>maven-scm-providers-standard</artifactId>
+      <version>${org.apache.maven.scm.version}</version>
+      <type>pom</type>
+    </dependency>
+    <dependency>
+      <groupId>org.twdata.maven</groupId>
+      <artifactId>mojo-executor</artifactId>
+      <version>${org.twdata.maven.mojo-executor.version}</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-plugin-plugin</artifactId>
+        <configuration>
+          <goalPrefix>gource</goalPrefix>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.plexus</groupId>
+        <artifactId>plexus-component-metadata</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <configuration>
+          <includes>
+            <include>org.dthume.maven.gource.*</include>
+          </includes>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
