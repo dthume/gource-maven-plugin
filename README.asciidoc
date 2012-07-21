@@ -1,5 +1,5 @@
 gource-maven-plugin
-=================
+===================
 David Thomas Hume
 :Author Initials: DTH
 
